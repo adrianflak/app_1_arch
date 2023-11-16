@@ -39,6 +39,7 @@ jobs:
       #       release.zip
       #       !venv/
   deploy:
+    needs: build
     name: Wdrożenia na serwer
     runs-on: ubuntu-latest
     steps:
