@@ -17,13 +17,18 @@ jobs:
     - name: Github Checkout
       uses: actions/checkout@v4
 
-    - name: Synchronizacja do FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: 172.206.249.203
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: app_1/
+    - name: Synchronizacja do Azure App Service
+      uses: azure/webapps-deploy@v1
+      with: 
+        app-name: archapp12
+        publish-profile: ${{ secrets.AZURE_WEB_APP }}
+    
+      # uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      # with:
+      #   server: 172.206.249.203
+      #   username: ${{ secrets.ftp_username }}
+      #   password: ${{ secrets.ftp_password }}
+      #   server-dir: app_1/
     
   
     
